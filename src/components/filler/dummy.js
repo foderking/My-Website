@@ -19,35 +19,102 @@ Rhoncus est pellentesque elit ullamcorper dignissim cras. Quisque egestas diam i
 In arcu cursus euismod quis. Blandit turpis cursus in hac habitasse platea. Phasellus faucibus scelerisque eleifend donec. Egestas sed tempus urna et. Massa id neque aliquam vestibulum morbi blandit cursus. Dui vivamus arcu felis bibendum ut tristique et. Donec ac odio tempor orci dapibus ultrices in iaculis. Bibendum arcu vitae elementum curabitur. In nulla posuere sollicitudin aliquam ultrices sagittis. Nisl vel pretium lectus quam id leo in. Felis bibendum ut tristique et egestas quis ipsum suspendisse. Vitae tempus quam pellentesque nec nam aliquam sem et tortor. Accumsan tortor posuere ac ut consequat semper. Non curabitur gravida arcu ac tortor dignissim convallis aenean. Non nisi est sit amet facilisis magna etiam tempor. Risus quis varius quam quisque id diam vel quam. Arcu risus quis varius quam quisque. Id semper risus in hendrerit gravida rutrum quisque.
 Eget sit amet tellus cras adipiscing. Morbi tristique senectus et netus et. Risus viverra adipiscing at in tellus integer. Cursus sit amet dictum sit amet. Orci a scelerisque purus semper eget duis at tellus at. Id eu nisl nunc mi ipsum. Euismod in pellentesque massa placerat duis ultricies. Mi in nulla posuere sollicitudin aliquam ultrices sagittis. Ultricies mi eget mauris pharetra et ultrices. Laoreet suspendisse interdum consectetur libero id faucibus nisl tincidunt eget. Tristique senectus et netus et malesuada fames ac turpis egestas. Mattis vulputate enim nulla aliquet porttitor lacus luctus accumsan tortor.
 At erat pellentesque adipiscing commodo elit at imperdiet. Est ullamcorper eget nulla facilisi etiam dignissim diam. Integer enim neque volutpat ac tincidunt vitae semper. Varius duis at consectetur lorem donec massa. Quis risus sed vulputate odio ut enim blandit volutpat maecenas. Duis ultricies lacus sed turpis. Tristique senectus et netus et malesuada fames. Id aliquet risus feugiat in ante metus dictum. Mattis vulputate enim nulla aliquet porttitor lacus luctus. Aliquet nec ullamcorper sit amet risus nullam.
-acus viverra vitae congue eu consequat ac felis donec. Neque aliquam vestibulum morbi blandit. Malesuada fames ac turpis egestas sed tempus urna. Est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Risus in hendrerit gravida rutrum quisque non tellus orci. Velit ut tortor pretium viverra suspendisse potenti nullam. Sollicitudin tempor id eu nisl. Volutpat ac tincidunt vitae semper quis lectus nulla. Est ante in nibh mauris. Nisl nunc mi ipsum faucibus vitae aliquet nec ullamcorper. Nisl tincidunt eget nullam non nisi est. Purus viverra accumsan in nisl nisi scelerisque eu. Lacus laoreet non curabitur gravida arcu ac tortor. Sagittis id consectetur purus ut faucibus pulvinar elementum integer enim. Netus et malesuada fames ac. Elementum facilisis leo vel fringilla est ullamcorper eget.
-`
-function stringSplit( str ) 
+acus viverra vitae congue eu consequat ac felis donec. Neque aliquam vestibulum morbi blandit. Malesuada fames ac turpis egestas sed tempus urna. Est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Risus in hendrerit gravida rutrum quisque non tellus orci. Velit ut tortor pretium viverra suspendisse potenti nullam. Sollicitudin tempor id eu nisl. Volutpat ac tincidunt vitae semper quis lectus nulla. Est ante in nibh mauris. Nisl nunc mi ipsum faucibus vitae aliquet nec ullamcorper. Nisl tincidunt eget nullam non nisi est. Purus viverra accumsan in nisl nisi scelerisque eu. Lacus laoreet non curabitur gravida arcu ac tortor. Sagittis id consectetur purus ut faucibus pulvinar elementum integer enim. Netus et malesuada fames ac. Elementum facilisis leo vel fringilla est ullamcorper eget.`
+
+
+
+
+function paragraphSplit( str ) 
 {
-	return str.split('\n')
+	const ans = str.split('\n')
+
+	if (ans.length === 1 && !ans[0]) {
+		return []
+	}
+
+	return ans 
 }
 
-const rand = () =>  stringSplit(text).sort(() => (Math.random() > .5) ? 1 : -1)
+function sentenceSplit(str)
+{
+	const ans = str.split(' ')
 
+	if (ans.length === 1 && !ans[0]) {
+		return []
+	}
+
+	return ans
+}
+
+//                  //
+
+function getMaxParagraphNo()
+{
+	const no = paragraphSplit(text).length
+	console.log(`Max no. of paragraphs is: ${no}`)
+
+	return no
+}
+
+function getMaxSentenceNo()
+{
+	const no = sentenceSplit(getSmallestStr()).length
+	console.log(`Max no. of words is: ${no}`)
+
+	return no
+}
+
+
+// Helper Functions //
+//                  //
+//                  //
+const getSmallestStr = () => 
+{
+	const arr = paragraphSplit(text)
+	// console.log(arr)
+
+	const rand = arr.reduce(function(a, b) {
+    return (a.length <= b.length) ? a : b
+  }) 
+
+	console.log(`smallest string is "${rand}"`)
+
+	return rand
+}
+
+const rand = () =>  
+{
+	return paragraphSplit(text).sort( 
+		() => (Math.random() > .5) ? 1 : -1
+	)
+}
+
+//                  //
 
 
 function generateRandomParagraph(parag)
 {
-	const ans = rand().slice(0, parag)
+	const par = rand()
+	const ans = par.slice(0, parag)
 
+	// console.log(par.length, 'paragraphs')
 	return ans.join('\n')
 }
 
 function generateRandomLine(lines)
 {
-	const ans = rand()[0].split(' ').slice(0, lines)
+	const randLine = rand()[0]
+	const ans = sentenceSplit(randLine).slice(0, lines)
 
 	return ans.join(' ')
 }
 
 
-let a = generateRandomParagraph(9)
-console.log(a)
-a = generateRandomLine(3)
-
-console.log()
-console.log(a)
+module.exports = {
+	paragraphSplit,
+	sentenceSplit,
+	getMaxParagraphNo,
+	getMaxSentenceNo,
+	generateRandomLine,
+	generateRandomParagraph
+}
