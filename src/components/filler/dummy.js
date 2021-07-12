@@ -56,14 +56,21 @@ function getMaxParagraphNo()
 	return no
 }
 
-function getMaxSentenceNo(show = false)
+function getMinSentenceNo(show = false)
 {
 	const no = sentenceSplit(getSmallestStr(show)).length
-	console.log(`Max no. of words is: ${no}`)
+	console.log(`Min no. of words is: ${no}`)
 
 	return no
 }
 
+function getMaxSentenceNo(show = false)
+{
+	const no = sentenceSplit(getBiggestStr(show)).length
+	console.log(`Max no. of words is: ${no}`)
+
+	return no
+}
 
 
 
@@ -94,8 +101,24 @@ const getSmallestStr = (show = false) =>
 	return rand
 }
 
+const getBiggestStr = (show = false) => 
+{
+	const arr = paragraphSplit(text)
+	// console.log(arr)
+
+	const rand = arr.reduce(function(a, b) {
+    return (a.length >= b.length) ? a : b
+  }) 
+
+	if (show) console.log(`biggest string is "${rand}"`)
+
+	return rand
+}
+
 const rand = () =>  
 {
+	// Turns all text into an array and shuffles it
+	// Returns array
 	return paragraphSplit(text).sort( 
 		() => (Math.random() > .5) ? 1 : -1
 	)
@@ -110,32 +133,48 @@ const rand = () =>
 
 
 // Generates a string containing several paragraphs with no of paragraphs as argument
-function generateRandomParagraph(parag)
+function generateRandomParagraph(parag, list = false)
 {
+	if (parag < 0) {
+		console.log('Negative number as an argument not allowed')
+		return []
+	} 
+
 	const par = rand()
 	const ans = par.slice(0, parag)
+
+	if (list) return ans
 
 	return ans.join('\n')
 }
 
 // Generates a string containing a single sentence with no of words as argument
-function generateRandomLine(words)
-{
+function generateRandomLine(words, list = false)
+{	
+	if (words < 0) {
+		console.log('Negative number as an argument not allowed')
+		return []
+	} 
+
+
 	const randLine = rand()[0]
 	const ans = sentenceSplit(randLine).slice(0, words)
+
+	if (list) return ans
 
 	return ans.join(' ')
 }
 
 // Generates a string containing a random word 
-function generateRandomWord()
+function generateRandomWord(debug = false)
 {
-	const randLine = rand()[0]
-	const ans = sentenceSplit(randLine)[Random(getMaxSentenceNo())]
+	// const randLine = rand()[0]
+	const maxim = getMinSentenceNo()
+	const ans = generateRandomLine(maxim, true)[Random(maxim)]
+
 	console.log(ans)
 
 	return ans 
-
 }
 
 module.exports = {
@@ -144,6 +183,7 @@ module.exports = {
 	sentenceSplit,
 	getMaxParagraphNo,
 	getMaxSentenceNo,
+	getMinSentenceNo,
 	generateRandomLine,
 	generateRandomWord,
 	generateRandomParagraph

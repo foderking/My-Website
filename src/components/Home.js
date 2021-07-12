@@ -10,9 +10,9 @@ const Home = () =>
 				<DummySentence length={4}/> 
 			</h1>
 
-			<p> 
-				<DummyParagraph length={1} /> 
-			</p>
+			<div> 
+				<DummyParagraph length={2} /> 
+			</div>
 		</div>
 	)
 }

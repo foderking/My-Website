@@ -1,12 +1,17 @@
 import React from 'react'
 import { generateRandomParagraph } from './dummy'
+import RandomNumGen from '../functionality/random'
 
 
 const DummyParagraph = (props) =>
 {
-	const paragraph = generateRandomParagraph(props.length)
+	// recieves an array of paragraphs
+	const paragraph = generateRandomParagraph(props.length, true)
 
-	return <>{paragraph}</>
+	// maps each element to a paragraph element and renders everything
+	return <> { 
+		paragraph.map( each => <p key={RandomNumGen()}>{each}</p> ) 
+	} </>
 }
 
 export default DummyParagraph

@@ -1,5 +1,6 @@
 import React from 'react'
 import { generateRandomWord } from './filler/dummy'
+import RandomNumGen from './functionality/random'
 
 const Navigation = () =>
 {
@@ -22,7 +23,7 @@ const Navigation = () =>
 
 				{
 					navLinks.map( each => 
-					<li> 
+					<li key={RandomNumGen()}> 
 						<a href={ each === 'Home' ? '/' : `/${each.toLowerCase()}` } >
 							{each}
 						</a>
