@@ -6,7 +6,7 @@ const DummyParagraph = (props) =>
 {
 	const paragraph = generateRandomParagraph(props.length)
 
-	return <p>{paragraph}</p>
+	return <>{paragraph}</>
 }
 
 export default DummyParagraph

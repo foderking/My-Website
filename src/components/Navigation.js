@@ -1,13 +1,35 @@
 import React from 'react'
+import { generateRandomWord } from './filler/dummy'
 
 const Navigation = () =>
 {
+	const link1 = generateRandomWord()
+	const link2 = generateRandomWord()
+	const link3 = generateRandomWord()
+
+	const navLinks = [
+		'Home',
+		'Apps',
+		'Projects',
+		link1,
+		link2,
+		link3
+	]
+
 	return (
 		<nav>
 			<ul>
-				<li><a href='/'>Home</a></li>
-				<li><a href='/apps'>Apps</a></li>
-				<li><a href='/projects'>Projects</a></li>
+
+				{
+					navLinks.map( each => 
+					<li> 
+						<a href={ each === 'Home' ? '/' : `/${each.toLowerCase()}` } >
+							{each}
+						</a>
+					</li>
+					)
+				}
+
 			</ul>
 		</nav>	
 	)

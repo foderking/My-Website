@@ -119,10 +119,10 @@ function generateRandomParagraph(parag)
 }
 
 // Generates a string containing a single sentence with no of words as argument
-function generateRandomLine(lines)
+function generateRandomLine(words)
 {
 	const randLine = rand()[0]
-	const ans = sentenceSplit(randLine).slice(0, lines)
+	const ans = sentenceSplit(randLine).slice(0, words)
 
 	return ans.join(' ')
 }
