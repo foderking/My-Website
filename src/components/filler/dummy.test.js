@@ -1,7 +1,7 @@
 const dummy = require('./dummy')
 
 const MAX_PARAGRAPHS = dummy.getMaxParagraphNo() 
-const MAX_LINE = dummy.getMaxSentenceNo() 
+const MAX_LINE = dummy.getMaxSentenceNo(true) 
 
 describe('testing "generateRandomParagraph()"', () => {
 	test('should generate correct paragraphs', () => {
@@ -26,7 +26,7 @@ describe('testing "generateRandomParagraph()"', () => {
 	})
 
 	test('should work with a random number of paragraphs', () => {
-		const no = Math.floor(Math.random() * MAX_PARAGRAPHS)
+		const no = dummy.Random(MAX_PARAGRAPHS) 
 		const text = dummy.generateRandomParagraph(no)	
 		// console.log(no)
 
@@ -57,7 +57,7 @@ describe('testing "generateRandomLine()"', () => {
 	})
 
 	test('should work with a random number of paragraphs', () => {
-		const no = Math.floor(Math.random() * MAX_LINE)
+		const no = dummy.Random(MAX_LINE) 
 		const text = dummy.generateRandomLine(no)	
 		// console.log(no)
 
@@ -65,3 +65,13 @@ describe('testing "generateRandomLine()"', () => {
 	})
 })
 
+describe('testing "generateRandomWord()"', () => {
+		test('should generate correct word', () => {
+		const text = dummy.generateRandomWord()	
+		// console.log(text)
+
+		expect( dummy.sentenceSplit(text).length ).toBe(1)
+	})
+
+
+})

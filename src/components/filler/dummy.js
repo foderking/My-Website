@@ -46,7 +46,7 @@ function sentenceSplit(str)
 	return ans
 }
 
-//                  //
+
 
 function getMaxParagraphNo()
 {
@@ -56,19 +56,26 @@ function getMaxParagraphNo()
 	return no
 }
 
-function getMaxSentenceNo()
+function getMaxSentenceNo(show = false)
 {
-	const no = sentenceSplit(getSmallestStr()).length
+	const no = sentenceSplit(getSmallestStr(show)).length
 	console.log(`Max no. of words is: ${no}`)
 
 	return no
 }
 
 
+
+
+function Random(max)
+{
+	return Math.floor(Math.random() * max)
+}
+
 // Helper Functions //
 //                  //
 //                  //
-const getSmallestStr = () => 
+const getSmallestStr = (show = false) => 
 {
 	const arr = paragraphSplit(text)
 	// console.log(arr)
@@ -77,7 +84,7 @@ const getSmallestStr = () =>
     return (a.length <= b.length) ? a : b
   }) 
 
-	console.log(`smallest string is "${rand}"`)
+	if (show) console.log(`smallest string is "${rand}"`)
 
 	return rand
 }
@@ -89,18 +96,24 @@ const rand = () =>
 	)
 }
 
-//                  //
 
 
+
+
+
+
+
+
+// Generates a string containing several paragraphs with no of paragraphs as argument
 function generateRandomParagraph(parag)
 {
 	const par = rand()
 	const ans = par.slice(0, parag)
 
-	// console.log(par.length, 'paragraphs')
 	return ans.join('\n')
 }
 
+// Generates a string containing a single sentence with no of words as argument
 function generateRandomLine(lines)
 {
 	const randLine = rand()[0]
@@ -109,12 +122,24 @@ function generateRandomLine(lines)
 	return ans.join(' ')
 }
 
+// Generates a string containing a random word 
+function generateRandomWord()
+{
+	const randLine = rand()[0]
+	const ans = sentenceSplit(randLine)[Random(getMaxSentenceNo())]
+	console.log(ans)
+
+	return ans 
+
+}
 
 module.exports = {
+	Random,
 	paragraphSplit,
 	sentenceSplit,
 	getMaxParagraphNo,
 	getMaxSentenceNo,
 	generateRandomLine,
+	generateRandomWord,
 	generateRandomParagraph
 }
