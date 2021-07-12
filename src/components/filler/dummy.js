@@ -72,6 +72,11 @@ function Random(max)
 	return Math.floor(Math.random() * max)
 }
 
+
+
+
+
+
 // Helper Functions //
 //                  //
 //                  //

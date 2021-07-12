@@ -1,20 +1,15 @@
 import React from 'react'
 import './index.css'
-
+import Home from './components/Home'
+import Navigation from './components/Navigation'
 
 
 const App = () => 
 {
 	return (
 		<div className="container" >
-			<nav>
-				<ul>
-					<li><a href='/'>Home</a></li>
-					<li><a href='/apps'>Apps</a></li>
-					<li><a href='/projects'>Projects</a></li>
-				</ul>
-			</nav>	
-			Hello World
+			<Navigation /> 
+			<Home />
 		</div>
 	)
 }
