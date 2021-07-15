@@ -1,10 +1,11 @@
 import React from 'react'
+import { Route, Switch, NavLink, Link } from 'react-router-dom'
 import './index.css'
 import Home from './components/Home'
 import Navigation from './components/Navigation'
 import Footer from './components/Footer'
-import { Route, Switch, NavLink, Link } from 'react-router-dom'
 import SearchBar from './components/SearchBar'
+import Apps from './components/Apps'
 
 
 const App = () => 
@@ -20,7 +21,7 @@ const App = () =>
 
 			<Switch>			
 				<Route path='/apps'>
-					<h1>app directory</h1>
+					<Apps />
 				</Route>
 
 				<Route path='/projects'>

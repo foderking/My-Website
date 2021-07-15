@@ -56,10 +56,11 @@ function getMaxParagraphNo()
 	return no
 }
 
-function getMinSentenceNo(show = false)
+function getMinSentenceNo(DEBUG = false)
 {
-	const no = sentenceSplit(getSmallestStr(show)).length
-	console.log(`Min no. of words is: ${no}`)
+	const no = sentenceSplit(getSmallestStr(DEBUG)).length
+
+	if (DEBUG) console.log(`Min no. of words is: ${no}`)
 
 	return no
 }
@@ -172,7 +173,7 @@ function generateRandomWord(debug = false)
 	const maxim = getMinSentenceNo()
 	const ans = generateRandomLine(maxim, true)[Random(maxim)]
 
-	console.log(ans)
+	if (debug) console.log(ans)
 
 	return ans 
 }
