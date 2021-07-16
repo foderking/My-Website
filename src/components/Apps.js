@@ -72,7 +72,7 @@ const Index = () =>
 const AppBox = (props) =>
 <Link to={props.link} >
 	<div className='app-box'>
-		<img src='https://via.placeholder.com/150' />
+		<img className='img-thumbnail' src='https://via.placeholder.com/150' />
 		{props.text}
 	</div>
 </Link>

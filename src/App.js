@@ -6,18 +6,16 @@ import Navigation from './components/Navigation'
 import Footer from './components/Footer'
 import SearchBar from './components/SearchBar'
 import Apps from './components/Apps'
+import InputField from './components/hooks/InputField'
 
 
 const App = () => 
 {
+	const search = InputField('text', '')
+
 	return (
 		<div className="container" >
 			<Navigation /> 
-			<SearchBar 
-				onChange={() => 4}
-				handleSubmit={() => 4}
-				buttonText='Find'
-			/>
 
 			<Switch>			
 				<Route path='/apps'>

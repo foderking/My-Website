@@ -1,6 +1,5 @@
 const path = require('path')
 const minicss = require('mini-css-extract-plugin')
-var mode = process.env.NODE_ENV || 'devel'
 
 const config = {
 	entry: ['@babel/polyfill', './src/index.js'],
@@ -31,7 +30,6 @@ const config = {
 		compress: true,
 		port: 4444,
 	},
-	devtool: (mode === 'devel') ? 'source-map' : false,
 }
 
 module.exports = config

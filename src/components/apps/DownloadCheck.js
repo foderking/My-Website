@@ -37,7 +37,7 @@ const DownloadCheck = () =>
 					<SpeedDropDown name="file-size" value={fileSizeSelect.main.value} onChange={fileSizeSelect.main.onChange}/> 
 				</div>
 
-				<h3>{ secondsReducer( FILE_SIZE / DOWNLOAD_SPEED ) }</h3>
+				<span className='f2'>{ secondsReducer( FILE_SIZE / DOWNLOAD_SPEED ) }</span>
 			</div>
 		</div>
 	)
