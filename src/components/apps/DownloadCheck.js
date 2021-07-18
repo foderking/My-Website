@@ -2,6 +2,7 @@ import React from 'react'
 import InputComp from '../InputComp'
 import secondsReducer from '../functionality/secondsReducer'
 import InputField from '../hooks/InputField'
+import DropDown from '../DropDown'
 
 const DownloadCheck = () => 
 {
@@ -28,16 +29,22 @@ const DownloadCheck = () =>
 				<div>
 					Enter Download Speed :
 					<InputComp {...downloadSpeed.main} />
-					<SpeedDropDown name="select" value={downloadSpeedSelect.main.value} onChange={downloadSpeedSelect.main.onChange}/> /s 
+					
+					<DropDown
+						value={downloadSpeedSelect.main.value} onChange={downloadSpeedSelect.main.onChange} parameters={['KB', 'MB', 'GB', 'TB']}
+					/> /s
 				</div>
 
 				<div>
 					Enter size of file   :
 					<input {...fileSize.main}/>
-					<SpeedDropDown name="file-size" value={fileSizeSelect.main.value} onChange={fileSizeSelect.main.onChange}/> 
+
+					<DropDown
+						value={fileSizeSelect.main.value} onChange={fileSizeSelect.main.onChange} parameters={['KB', 'MB', 'GB', 'TB']}
+					/>
 				</div>
 
-				<span className='f2'>{ secondsReducer( FILE_SIZE / DOWNLOAD_SPEED ) }</span>
+				<code className='display-5'>{ secondsReducer( FILE_SIZE / DOWNLOAD_SPEED ) }</code>
 			</div>
 		</div>
 	)

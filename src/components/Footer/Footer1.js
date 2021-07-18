@@ -1,5 +1,6 @@
 import React from 'react'
-import DummySentence from './filler/DummySentence'
+import { generateRandomLine } from '../filler/dummy'
+import DummySentence from '../filler/DummySentence'
 
 
 
@@ -14,6 +15,11 @@ const Footer = () =>
 			<div>
 				<DummySentence length={9} />
 			</div>
+				<p>
+					© {new Date().getFullYear()}{" "}
+					<a href="#">Foderking</a>, {generateRandomLine(6)}
+				</p>
+
 		</footer>
 	)
 

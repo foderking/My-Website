@@ -9,7 +9,7 @@ const InputField = (type, init) =>
 	function onChange(event)
 	{
 		const val = event.target.value
-		console.log(val)
+		// console.log(val)
 		setValue(val)
 	}
 

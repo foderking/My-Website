@@ -32,6 +32,11 @@ const config = {
 		port: 4444,
 	},
 	devtool: (mode === 'devel') ? 'source-map' : false,
+	resolve: {
+    alias: {
+      Components: path.resolve(__dirname, 'src/components/')
+    }
+  }
 }
 
 module.exports = config

@@ -1,9 +1,8 @@
 import React from 'react'
-import { generateRandomWord } from './filler/dummy'
-import RandomNumGen from './functionality/random'
+import { generateRandomWord } from 'Components/filler/dummy'
+import RandomNumGen from 'Components/functionality/random'
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
-import SearchBar from './SearchBar'
-import InputField from './hooks/InputField'
+import SearchBar from 'Components/SearchBar'
 
 
 const Navigation = () =>
@@ -21,14 +20,6 @@ const Navigation = () =>
 		link3
 	]
 
-	const search = InputField('search', '')
-
-	function handleSubmit(event) 
-	{
-		event.preventDefault()
-		console.log(search.main.value)
-		console.log(event.target)
-	}
 
 	return (
 		<nav id='navbar' className='navbar navbar-expand-lg navbar-light bg-light'>
@@ -41,13 +32,9 @@ const Navigation = () =>
 				<NavbarCollapse navLinks={navLinks}/>
 				
 				<SearchBar 
-					onChange={search.main.onChange}
-					handleSubmit={handleSubmit}
-					value={search.main.value}
-					
 					formClass='d-flex' 
 
-					inputType={search.main.type} 
+					inputType='search' 
 					inputClass='form-control me-2'
 					inputPlaceholder='Search'
 					inputLabel='Search'
